@@ -1,0 +1,41 @@
+{
+  "name": "react-native-animated-input",
+  "version": "1.0.0",
+  "description": "A lightweight and easy to use floating animated input! :)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kcotias/react-native-animated-input.git"
+  },
+  "keywords": [
+    "react",
+    "react-native",
+    "form",
+    "formik",
+    "input",
+    "textinput",
+    "text",
+    "animated",
+    "animation",
+    "floating",
+    "reactjs",
+    "javascript",
+    "react-native-input",
+    "react-native-floating-input",
+    "react-native-animated",
+    "react-native-floating-input",
+    "component"
+  ],
+  "author": "Kaian Cotias",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kcotias/react-native-animated-input/issues"
+  },
+  "homepage": "https://github.com/kcotias/react-native-animated-input#readme",
+  "devDependencies": {
+    "metro-react-native-babel-preset": "^0.58.0"
+  }
+}
