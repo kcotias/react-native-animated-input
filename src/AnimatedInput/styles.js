@@ -24,6 +24,7 @@ export default StyleSheet.create({
     paddingBottom: 3
   },
   error: {
+    marginBottom: 5,
     color: "#d32f2f",
     fontSize: 13,
     marginTop: 2
