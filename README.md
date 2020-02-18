@@ -1,6 +1,6 @@
 # React Native Animated Input
 
-Need a beautiful, lightweight and customizable Animated Floating Input? Here it is!
+Do you need a beautiful, lightweight and customizable Animated Floating Input? Here it is!
 
 A cross-platform Animated Floating Input component with style options and smooth animation.
 

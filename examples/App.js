@@ -18,7 +18,7 @@ const App = () => {
           onChangeText={text => setEmail(text)}
           value={email}
           styleLabel={{fontWeight: '600'}}
-          styleBodyContent={{borderBottomWidth: 1.5}}
+          styleBodyContent={styles.bodyContent}
         />
         <AnimatedInput
           placeholder="Password"
@@ -27,7 +27,7 @@ const App = () => {
           onChangeText={text => setPassword(text)}
           value={password}
           styleLabel={{fontWeight: '600'}}
-          styleBodyContent={{borderBottomWidth: 1.5}}
+          styleBodyContent={styles.bodyContent}
         />
         <TouchableOpacity
           style={styles.button}
@@ -82,6 +82,9 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     fontSize: 16,
+  },
+  bodyContent: {
+    borderBottomWidth: 1.5,
   },
 });
 
