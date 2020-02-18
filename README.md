@@ -1,4 +1,4 @@
-# React Native Animated Progress
+# React Native Animated Input
 
 Need a beautiful, lightweight and customizable Animated Floating Input? Here it is!
 
