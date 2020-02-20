@@ -22,7 +22,9 @@ export default StyleSheet.create({
   },
   label: {
     fontSize: 13,
-    paddingBottom: 7
+    paddingBottom: 7,
+    color: '#606060',
+    fontWeight: '600'
   },
   error: {
     marginBottom: 5,
