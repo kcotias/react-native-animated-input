@@ -7,11 +7,12 @@ export default StyleSheet.create({
   },
   input: {
     fontSize: 18,
-    flex: 1
+    flex: 1,
+    marginBottom: 30
+
   },
   bodyContent: {
     borderBottomColor: "black",
-    borderBottomWidth: 1,
     justifyContent: "flex-start",
     flexDirection: "row"
   },
@@ -21,7 +22,7 @@ export default StyleSheet.create({
   },
   label: {
     fontSize: 13,
-    paddingBottom: 3
+    paddingBottom: 7
   },
   error: {
     marginBottom: 5,
