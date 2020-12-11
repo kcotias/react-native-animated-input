@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, forwardRef } from "react";
 import { View, TextInput, Animated, Text } from "react-native";
 import styles from "./styles";
 
-const AnimatedInput = ({
+const AnimatedTextInput = ({
   placeholder,
   errorText,
   valid,
@@ -22,7 +22,6 @@ const AnimatedInput = ({
   const [showError, setShowError] = useState(false);
   const [animatedIsFocused] = useState(new Animated.Value(1));
   const [isInputFocused, setInputFocus] = useState(false);
-
 
   const inputFontSize = styleInput.fontSize || styles.input.fontSize;
   const labelFontSize = styleLabel.fontSize || styles.label.fontSize;
@@ -44,7 +43,7 @@ const AnimatedInput = ({
     animationLabelFontSize,
     animatedIsFocused,
     startAnimation,
-    showInput
+    showInput,
   ]);
 
   const onBlur = () => {
@@ -87,7 +86,7 @@ const AnimatedInput = ({
   const startAnimation = useCallback(() => {
     Animated.timing(animatedIsFocused, {
       toValue: showInput ? 1 : 0,
-      duration: 150
+      duration: 150,
     }).start(() => {
       if (!showInput) {
         setShowInput(true);
@@ -101,8 +100,8 @@ const AnimatedInput = ({
     const inputAdjust = {
       height: animatedIsFocused.interpolate({
         inputRange: [0, 1],
-        outputRange: [sizeShow, sizeHide]
-      })
+        outputRange: [sizeShow, sizeHide],
+      }),
     };
     return inputAdjust;
   }, [animatedIsFocused, inputFontSize, labelFontSize]);
@@ -111,8 +110,8 @@ const AnimatedInput = ({
     const fontAdjust = {
       fontSize: animatedIsFocused.interpolate({
         inputRange: [0, 1],
-        outputRange: [labelFontSize, inputFontSize]
-      })
+        outputRange: [labelFontSize, inputFontSize],
+      }),
     };
     return fontAdjust;
   }, [animatedIsFocused, inputFontSize, labelFontSize]);
@@ -126,17 +125,14 @@ const AnimatedInput = ({
           styles.bodyContent,
           styleBodyContent,
           borderColor(showError),
-          { 
+          {
             marginBottom: showError ? 0 : getErrorContentSpace(),
-            borderBottomWidth: isInputFocused ? 1.5 : 0.5
+            borderBottomWidth: isInputFocused ? 1.5 : 0.5,
           },
-          animationView()
+          animationView(),
         ]}
       >
-        <View style={ style={{
-            flex: 1,
-            justifyContent: 'space-between'
-          }}>
+        <View style={styles.wrapper}>
           <Animated.Text
             style={[styles.label, styleLabel, animationLabelFontSize()]}
             onPress={() => !disabled && onFocus()}
@@ -168,7 +164,7 @@ const AnimatedInput = ({
           style={[
             styles.error,
             errorColor && { color: errorColor },
-            styleError
+            styleError,
           ]}
         >
           {errorText}
@@ -178,6 +174,10 @@ const AnimatedInput = ({
   );
 };
 
+const AnimatedInput = forwardRef((props, ref) => (
+  <AnimatedTextInput {...props} innerRef={ref} />
+));
+
 AnimatedInput.defaultProps = {
   valid: true,
   disabled: false,
@@ -185,7 +185,7 @@ AnimatedInput.defaultProps = {
   styleInput: {},
   styleBodyContent: {},
   styleLabel: {},
-  styleError: {}
+  styleError: {},
 };
 
 export default AnimatedInput;
