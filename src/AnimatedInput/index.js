@@ -85,6 +85,7 @@ const AnimatedTextInput = ({
 
   const startAnimation = useCallback(() => {
     Animated.timing(animatedIsFocused, {
+      useNativeDriver: false,
       toValue: showInput ? 1 : 0,
       duration: 150,
     }).start(() => {
