@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useCallback, forwardRef } from "react";
-import { View, TextInput, Animated, Text } from "react-native";
-import styles from "./styles";
+import React, { useState, useEffect, useCallback, forwardRef } from 'react';
+import { View, TextInput, Animated, Text } from 'react-native';
+import styles from './styles';
 
 const AnimatedTextInput = ({
   placeholder,
@@ -16,6 +16,9 @@ const AnimatedTextInput = ({
   styleError,
   styleContent,
   styleBodyContent,
+  mask,
+  maskOptions = {},
+  innerRef,
   ...others
 }) => {
   const [showInput, setShowInput] = useState(false);
@@ -36,15 +39,7 @@ const AnimatedTextInput = ({
       startAnimation();
     }
     animationView();
-  }, [
-    valid,
-    value,
-    animationView,
-    animationLabelFontSize,
-    animatedIsFocused,
-    startAnimation,
-    showInput,
-  ]);
+  }, [valid, value, animationView, animationLabelFontSize, animatedIsFocused, startAnimation, showInput]);
 
   const onBlur = () => {
     setInputFocus(false);
@@ -64,11 +59,9 @@ const AnimatedTextInput = ({
 
   const borderColor = () => {
     const borderStyle = {};
-    borderStyle.borderBottomColor =
-      styleBodyContent.borderBottomColor ||
-      styles.bodyContent.borderBottomColor;
+    borderStyle.borderBottomColor = styleBodyContent.borderBottomColor || styles.bodyContent.borderBottomColor;
     if (showError) {
-      borderStyle.borderBottomColor = errorColor || "#d32f2f";
+      borderStyle.borderBottomColor = errorColor || '#d32f2f';
     }
     return borderStyle;
   };
@@ -118,9 +111,7 @@ const AnimatedTextInput = ({
   }, [animatedIsFocused, inputFontSize, labelFontSize]);
 
   return (
-    <View
-      style={[styles.content, styleContent, { height: setContentHeight() }]}
-    >
+    <View style={[styles.content, styleContent, { height: setContentHeight() }]}>
       <Animated.View
         style={[
           styles.bodyContent,
@@ -143,46 +134,53 @@ const AnimatedTextInput = ({
           {showInput && (
             <View style={styles.toucheableLineContent}>
               <>{prefix}</>
-              <TextInput
-                {...others}
-                value={value}
-                pointerEvents={disabled ? "box-none" : "auto"}
-                selectionColor={styleInput.fontColor}
-                autoFocus
-                blurOnSubmit
-                editable={!disabled}
-                onBlur={() => onBlur()}
-                style={[styles.input, styleInput]}
-                onEndEditing={() => onBlur()}
-              />
+              {!!mask ? (
+                <TextInputMask
+                  {...others}
+                  value={value}
+                  pointerEvents={disabled ? 'box-none' : 'auto'}
+                  selectionColor={styleInput.fontColor}
+                  autoFocus
+                  blurOnSubmit
+                  editable={!disabled}
+                  onBlur={() => onBlur()}
+                  style={[styles.input, styleInput]}
+                  onEndEditing={() => onBlur()}
+                  type={mask || 'cpf'}
+                  options={maskOptions}
+                  ref={innerRef}
+                />
+              ) : (
+                <TextInput
+                  {...others}
+                  value={value}
+                  pointerEvents={disabled ? 'box-none' : 'auto'}
+                  selectionColor={styleInput.fontColor}
+                  autoFocus
+                  blurOnSubmit
+                  editable={!disabled}
+                  onBlur={() => onBlur()}
+                  style={[styles.input, styleInput]}
+                  onEndEditing={() => onBlur()}
+                  ref={innerRef}
+                />
+              )}
             </View>
           )}
         </View>
         <View style={styles.sufix}>{sufix}</View>
       </Animated.View>
-      {showError && (
-        <Text
-          style={[
-            styles.error,
-            errorColor && { color: errorColor },
-            styleError,
-          ]}
-        >
-          {errorText}
-        </Text>
-      )}
+      {showError && <Text style={[styles.error, errorColor && { color: errorColor }, styleError]}>{errorText}</Text>}
     </View>
   );
 };
 
-const AnimatedInput = forwardRef((props, ref) => (
-  <AnimatedTextInput {...props} innerRef={ref} />
-));
+const AnimatedInput = forwardRef((props, ref) => <AnimatedTextInput {...props} innerRef={ref} />);
 
 AnimatedInput.defaultProps = {
   valid: true,
   disabled: false,
-  value: "",
+  value: '',
   styleInput: {},
   styleBodyContent: {},
   styleLabel: {},
