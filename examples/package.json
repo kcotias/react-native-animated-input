@@ -12,7 +12,8 @@
   "dependencies": {
     "react": "16.9.0",
     "react-native": "0.61.5",
-    "react-native-animated-input": "file:../react-native-animated-input-1.0.0.tgz"
+    "react-native-animated-input": "../react-native-animated-input-1.0.0.tgz",
+    "react-native-masked-text": "^1.13.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
