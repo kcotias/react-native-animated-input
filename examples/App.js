@@ -19,6 +19,12 @@ const App = () => {
           value={email}
           styleLabel={{fontWeight: '600'}}
           styleBodyContent={styles.bodyContent}
+          mask="cel-phone"
+          maskOptions={{
+            maskType: 'BRL',
+            withDDD: true,
+            dddMask: '(99) ',
+          }}
         />
         <AnimatedInput
           placeholder="Password"
