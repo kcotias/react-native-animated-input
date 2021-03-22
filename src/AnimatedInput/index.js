@@ -19,6 +19,7 @@ const AnimatedTextInput = ({
   styleBodyContent,
   mask,
   maskOptions = {},
+  innerRef,
   ...others
 }) => {
   const [showInput, setShowInput] = useState(false);
@@ -148,6 +149,7 @@ const AnimatedTextInput = ({
                   onEndEditing={() => onBlur()}
                   type={mask || 'cpf'}
                   options={maskOptions}
+                  ref={innerRef}
                 />
               ) : (
                 <TextInput
@@ -161,6 +163,7 @@ const AnimatedTextInput = ({
                   onBlur={() => onBlur()}
                   style={[styles.input, styleInput]}
                   onEndEditing={() => onBlur()}
+                  ref={innerRef}
                 />
               )}
             </View>
