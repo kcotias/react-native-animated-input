@@ -20,6 +20,7 @@ const AnimatedTextInput = ({
   mask,
   maskOptions = {},
   innerRef,
+  selectionColor,
   ...others
 }) => {
   const [showInput, setShowInput] = useState(false);
@@ -140,7 +141,7 @@ const AnimatedTextInput = ({
                   {...others}
                   value={value}
                   pointerEvents={disabled ? 'box-none' : 'auto'}
-                  selectionColor={styleInput.fontColor}
+                  selectionColor={selectionColor}
                   autoFocus
                   blurOnSubmit
                   editable={!disabled}
@@ -156,7 +157,7 @@ const AnimatedTextInput = ({
                   {...others}
                   value={value}
                   pointerEvents={disabled ? 'box-none' : 'auto'}
-                  selectionColor={styleInput.fontColor}
+                  selectionColor={selectionColor}
                   autoFocus
                   blurOnSubmit
                   editable={!disabled}
