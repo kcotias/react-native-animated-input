@@ -21,7 +21,7 @@ const AnimatedTextInput = ({
   maskOptions = {},
   innerRef,
   selectionColor,
-  onChangeEnd = () => null
+  onChangeEnd = () => null,
   ...others
 }) => {
   const [showInput, setShowInput] = useState(false);
