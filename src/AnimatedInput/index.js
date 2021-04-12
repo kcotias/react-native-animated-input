@@ -21,6 +21,9 @@ const AnimatedTextInput = ({
   maskOptions = {},
   innerRef,
   selectionColor,
+  labelInitialSize,
+  labelFinalSize,
+  textInputFontSize,
   onChangeEnd = () => null,
   ...others
 }) => {
@@ -29,7 +32,7 @@ const AnimatedTextInput = ({
   const [animatedIsFocused] = useState(new Animated.Value(1));
   const [isInputFocused, setInputFocus] = useState(false);
 
-  const inputFontSize = styleInput.fontSize || styles.input.fontSize;
+  const inputFontSize = styleLabel.fontSize || styles.label.fontSize;
   const labelFontSize = styleLabel.fontSize || styles.label.fontSize;
   const errorFontSize = styleError.fontSize || styles.error.fontSize;
 
@@ -117,7 +120,10 @@ const AnimatedTextInput = ({
     const fontAdjust = {
       fontSize: animatedIsFocused.interpolate({
         inputRange: [0, 1],
-        outputRange: [labelFontSize, inputFontSize],
+        outputRange: [
+          labelFinalSize || labelFontSize,
+          labelInitialSize || inputFontSize,
+        ],
       }),
     };
     return fontAdjust;
@@ -159,7 +165,11 @@ const AnimatedTextInput = ({
                   blurOnSubmit
                   editable={!disabled}
                   onBlur={() => onBlur()}
-                  style={[styles.input, styleInput]}
+                  style={[
+                    styles.input,
+                    styleInput,
+                    textInputFontSize && { fontSize: textInputFontSize },
+                  ]}
                   onEndEditing={() => {
                     onChangeEnd();
                     onBlur();
