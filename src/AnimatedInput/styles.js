@@ -13,6 +13,7 @@ export default StyleSheet.create({
     fontSize: 18,
     flex: 1,
     marginBottom: 30,
+    height: 15
   },
   bodyContent: {
     borderBottomColor: "black",
