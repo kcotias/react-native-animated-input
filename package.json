@@ -1,6 +1,6 @@
 {
   "name": "react-native-animated-input",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "A lightweight and easy to use floating animated input! :)",
   "main": "index.js",
   "scripts": {
@@ -37,5 +37,8 @@
   "homepage": "https://github.com/kcotias/react-native-animated-input#readme",
   "devDependencies": {
     "metro-react-native-babel-preset": "^0.58.0"
+  },
+  "dependencies": {
+    "react-native-masked-text": "^1.13.0"
   }
 }
