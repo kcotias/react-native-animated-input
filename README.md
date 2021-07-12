@@ -111,5 +111,15 @@ Customizes the label/placeholder of the input.
 ##### `styleBodyContent` - obj {}
 
 Customizes the view that manage the component composition - sufix, prefix, animated. Be careful.
+##### `labelInitialSize` - obj {}
+
+Defines the fontSize of the label on it's initial State (inactive)
+##### `labelFinalSize` - obj {}
+
+Defines the fontSize of the label on it's Final State (active)
+##### `textInputFontSize` - obj {}
+
+Defines the fontSize of the text input (active)
+
 
 #### A huge thanks to my friend Laurent Lorena who made this possible! <3
